@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {Link} from 'react-router-dom';
 
 import {User, UserCard} from './User.js';
-import {BlueButton, BlueButtonWrapper, AddEvent} from './Btns.js';
+import {BlueButton, BlueButtonWrapper, YelButton, GreyButton} from './Btns.js';
 import {Inputs, InputWrapper} from './Inputs.js';
 
 
@@ -12,11 +12,16 @@ let MyEv=()=>
 <>
 <header class='m-2'>
   <div class="d-flex justify-content-end">
-    <Link to='/event/new'><AddEvent/></Link> 
-    <Link to='/total'><BlueButton>Total: Summ</BlueButton></Link>
+    <Link to='../me'><YelButton>Me</YelButton></Link>
+    <Link to='/event/new'><YelButton>Add Event</YelButton></Link> 
+    <BlueButton onClick={() => alert(
+    `+ Summ
+- Summ
+Total: Summ`
+)}>Total: Summ</BlueButton>
   </div>
 </header>
-<EvName>My event 1</EvName>
+<EvName>Event name</EvName>
 <div class="d-flex justify-content-around flex-wrap-reverse">
   <User />  
   <User />  
@@ -24,7 +29,7 @@ let MyEv=()=>
 </div>
 <BlueButtonWrapper>
   <BlueButton>Delete this event</BlueButton>
-  <BlueButton>Add spendings</BlueButton>
+  <Link to="/event/id/edit"><BlueButton>Edit this event</BlueButton></Link>
 </BlueButtonWrapper>
 <footer class="my-3">
   <EventListener>
@@ -44,31 +49,87 @@ let EventListener =(prop)=>
 
 let EventList =(prop)=>
 <li class="nav-item">
-<a class="nav-link active">{prop.children}</a>
+<a class="nav-link">{prop.children}</a>
 </li>
 
 let NewEv =()=>
 <>
+ <div class="d-flex justify-content-end">
+   <Link to='../me'><YelButton>Me</YelButton></Link>
+   <BlueButton onClick={() => alert(
+    `+ Summ
+- Summ
+Total: Summ`
+)}>Total: Summ</BlueButton>
+ </div>
   <header class="my-2">
     <InputWrapper>
       <Inputs>Event name</Inputs>
     </InputWrapper>
   </header>
-  <div class="d-flex justify-content-around flex-wrap-reverse">
-    <UserCard />
-    <UserCard />
-    <UserCard />
-    <UserCard />
-    <UserCard />
-    <UserCard />
-  </div>
+  <EvName>With me were:</EvName>
+  <InputWrapper>
+      <div class="d-flex m-1">
+        <Inputs>Nick</Inputs>
+        <Inputs>$</Inputs>
+      </div>
+    </InputWrapper>  
   <footer class="my-4">
     <BlueButtonWrapper>
       <BlueButton>Cancel</BlueButton>
-      <BlueButton>Add a friend</BlueButton>
-      <Link to='/event/spendings'><BlueButton>Go to spendings</BlueButton></Link>
+      <BlueButton>Add user</BlueButton>
+      <BlueButton>Save event</BlueButton>
     </BlueButtonWrapper>
   </footer>
 </> 
 
-export {MyEv, NewEv, EventList, EventListener};
+
+let EditEv =()=>
+<>
+ <div class="d-flex justify-content-end">
+   <Link to='../../me'><YelButton>Me</YelButton></Link>
+   <BlueButton onClick={() => alert(
+    `+ Summ
+- Summ
+Total: Summ`
+)}>Total: Summ</BlueButton>
+ </div>
+  <header class="my-2">
+    <InputWrapper>
+      <Inputs placeholder="Event name">Event name</Inputs>
+    </InputWrapper>
+  </header>
+  <EvName>With me were:</EvName>
+  <InputWrapper>
+      <div class="d-flex">
+        <GreyButton>Delete this user</GreyButton>
+        <Inputs placeholder="Nick">Nick</Inputs>
+        <Inputs placeholder="summ">$</Inputs>
+      </div>
+      <div class="d-flex">
+        <GreyButton>Delete this user</GreyButton>
+        <Inputs placeholder="Nick">Nick</Inputs>
+        <Inputs placeholder="summ">$</Inputs>
+      </div>
+      <div class="d-flex">
+        <GreyButton>Delete this user</GreyButton>
+        <Inputs placeholder="Nick">Nick</Inputs>
+        <Inputs placeholder="summ">$</Inputs>
+      </div>
+      <div class="d-flex">
+        <GreyButton>Delete this user</GreyButton>
+        <Inputs placeholder="Nick">Nick</Inputs>
+        <Inputs placeholder="summ">$</Inputs>
+      </div>      
+    </InputWrapper>  
+  <footer class="my-4">
+    <BlueButtonWrapper>
+      <BlueButton>Cancel</BlueButton>
+      <BlueButton>Add user</BlueButton>
+      <BlueButton>Save event</BlueButton>
+    </BlueButtonWrapper>
+  </footer>
+</> 
+
+
+export {MyEv, NewEv, EventList, EventListener, EditEv};

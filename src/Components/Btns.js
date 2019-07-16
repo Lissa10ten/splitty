@@ -10,10 +10,12 @@ let BlueButtonWrapper =(props)=>
   </div>
 
 let BlueButton=(prop)=>
-<button type="button" class="btn btn-outline-primary m-2">{prop.children}</button>
+<button type="button" class="btn btn-outline-primary m-2"onClick={prop.onClick}>{prop.children}</button>
 
-let AddEvent =(prop)=>
-<button type="button" class="btn btn-outline-warning m-2" onClick={prop.onClick}>New event</button>
-;
+let YelButton =(prop)=>
+<button type="button" class="btn btn-outline-warning m-2" onClick={prop.onClick}>{prop.children}</button>
 
-export {BlueButton, BlueButtonWrapper, AddEvent};
+let GreyButton =(prop)=>
+<button type="button" class="btn btn-outline-secondary m-3" style= {{height: 50}} onClick={prop.onClick}>{prop.children}</button>
+
+export {BlueButton, BlueButtonWrapper, YelButton, GreyButton};
